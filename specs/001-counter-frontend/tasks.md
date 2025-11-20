@@ -24,12 +24,12 @@
 
 **目的**: 專案初始化與基本結構建立
 
-- [ ] T001 建立 Flutter 專案結構（依據 plan.md 定義的目錄結構）
-- [ ] T002 配置 pubspec.yaml（新增 google_fonts: ^6.1.0 相依套件）
-- [ ] T003 [P] 建立 lib/theme/ 目錄結構
-- [ ] T004 [P] 建立 lib/pages/ 目錄結構
-- [ ] T005 [P] 建立 test/widget_test/ 目錄結構
-- [ ] T006 [P] 建立 integration_test/ 目錄結構
+- [x] T001 建立 Flutter 專案結構（依據 plan.md 定義的目錄結構）
+- [x] T002 配置 pubspec.yaml（新增 google_fonts: ^6.1.0 相依套件）
+- [x] T003 [P] 建立 lib/theme/ 目錄結構
+- [x] T004 [P] 建立 lib/pages/ 目錄結構
+- [x] T005 [P] 建立 test/widget_test/ 目錄結構
+- [x] T006 [P] 建立 integration_test/ 目錄結構
 
 ---
 
@@ -39,10 +39,10 @@
 
 **⚠️ 關鍵**: 在此階段完成前，無法開始任何使用者故事的實作
 
-- [ ] T007 [P] 建立設計代幣：lib/theme/app_colors.dart（定義 7 個顏色常數）
-- [ ] T008 [P] 建立設計代幣：lib/theme/app_text_styles.dart（定義 title 與 counter 文字樣式）
-- [ ] T009 [P] 建立設計代幣：lib/theme/app_theme.dart（定義尺寸、陰影、漸層）
-- [ ] T010 實作 main.dart 進入點（MaterialApp 設定，路由至 CounterPage）
+- [x] T007 [P] 建立設計代幣：lib/theme/app_colors.dart（定義 7 個顏色常數）
+- [x] T008 [P] 建立設計代幣：lib/theme/app_text_styles.dart（定義 title 與 counter 文字樣式）
+- [x] T009 [P] 建立設計代幣：lib/theme/app_theme.dart（定義尺寸、陰影、漸層）
+- [x] T010 實作 main.dart 進入點（MaterialApp 設定，路由至 CounterPage）
 
 **檢查點**: 基礎設施就緒 - 現在可以開始平行實作使用者故事
 
@@ -58,7 +58,7 @@
 
 > **注意: 先撰寫這些測試，確保它們失敗後再實作**
 
-- [ ] T011 [P] [US1] Widget 測試：CounterPage 初始狀態（test/widget_test/counter_page_initial_test.dart）
+- [x] T011 [P] [US1] Widget 測試：CounterPage 初始狀態（test/widget_test/counter_page_initial_test.dart）
   - 驗證標題顯示「計數器」
   - 驗證計數顯示「0」
   - 驗證浮動按鈕存在
@@ -70,7 +70,7 @@
 
 ### User Story 1 的實作
 
-- [ ] T013 [US1] 實作 CounterPage widget（lib/pages/counter_page.dart）
+- [x] T013 [US1] 實作 CounterPage widget（lib/pages/counter_page.dart）
   - 建立 StatefulWidget 與 State 類別
   - 初始化 _count = 0
   - 實作 build() 方法建立 Scaffold 結構
@@ -82,11 +82,11 @@
   - 建立 FloatingActionButton（尺寸 64×64，深藍色，+ 號圖示）
   - 加入 Key('increment_button') 與 tooltip
 
-- [ ] T014 [US1] 驗證 Widget 測試通過（執行 T011 測試並確保全部通過）
+- [x] T014 [US1] 驗證 Widget 測試通過（執行 T011 測試並確保全部通過）
 
-- [ ] T015 [US1] 驗證 Golden 測試通過（執行 T012 測試，如需更新 golden file 使用 --update-goldens）
+- [x] T015 [US1] 驗證 Golden 測試通過（執行 T012 測試，如需更新 golden file 使用 --update-goldens）
 
-- [ ] T016 [US1] 使用 Flutter DevTools 驗證效能指標
+- [x] T016 [US1] 使用 Flutter DevTools 驗證效能指標
   - 啟動時間 < 3 秒
   - 記憶體使用 < 50MB
   - 畫面渲染 60 FPS
@@ -105,27 +105,27 @@
 
 > **注意: 先撰寫這些測試，確保它們失敗後再實作**
 
-- [ ] T017 [P] [US2] Widget 測試：點擊按鈕遞增計數（test/widget_test/counter_page_increment_test.dart）
+- [x] T017 [P] [US2] Widget 測試：點擊按鈕遞增計數（test/widget_test/counter_page_increment_test.dart）
   - 驗證點擊一次按鈕後顯示「1」
   - 驗證連續點擊三次後顯示「3」
   - 驗證文字樣式保持一致（72px Bold）
   
-- [ ] T018 [P] [US2] 整合測試：完整使用者流程（integration_test/counter_flow_test.dart）
+- [x] T018 [P] [US2] 整合測試：完整使用者流程（integration_test/counter_flow_test.dart）
   - 模擬「開啟 App → 點擊三次 → 驗證顯示 3」完整流程
   - 驗證 UI 更新時間 < 100ms
 
 ### User Story 2 的實作
 
-- [ ] T019 [US2] 在 CounterPage 實作 incrementCounter() 方法（lib/pages/counter_page.dart）
+- [x] T019 [US2] 在 CounterPage 實作 incrementCounter() 方法（lib/pages/counter_page.dart）
   - 實作 void incrementCounter() 方法
   - 使用 setState(() { _count++; }) 更新狀態
   - 連接 FloatingActionButton 的 onPressed 至 incrementCounter
   
-- [ ] T020 [US2] 驗證 Widget 測試通過（執行 T017 測試並確保全部通過）
+- [x] T020 [US2] 驗證 Widget 測試通過（執行 T017 測試並確保全部通過）
 
-- [ ] T021 [US2] 驗證整合測試通過（執行 T018 測試並確保全部通過）
+- [x] T021 [US2] 驗證整合測試通過（執行 T018 測試並確保全部通過）
 
-- [ ] T022 [US2] 效能驗證：快速連點測試
+- [x] T022 [US2] 效能驗證：快速連點測試
   - 使用 Flutter DevTools Performance 面板
   - 快速連續點擊 20 次（每秒 20 次）
   - 驗證所有點擊正確註冊
@@ -146,7 +146,7 @@
 
 > **注意: 先撰寫這些測試，確保它們失敗後再實作**
 
-- [ ] T023 [P] [US3] Widget 測試：元件可定位性驗證（test/widget_test/counter_page_keys_test.dart）
+- [x] T023 [P] [US3] Widget 測試：元件可定位性驗證（test/widget_test/counter_page_keys_test.dart）
   - 驗證 find.byKey(Key('counter_title')) 可找到標題
   - 驗證 find.byKey(Key('counter_display')) 可找到計數顯示
   - 驗證 find.byKey(Key('increment_button')) 可找到按鈕
@@ -155,13 +155,13 @@
 
 ### User Story 3 的實作
 
-- [ ] T024 [US3] 在 CounterPage 加強無障礙功能（lib/pages/counter_page.dart）
+- [x] T024 [US3] 在 CounterPage 加強無障礙功能（lib/pages/counter_page.dart）
   - 確認所有 Key 識別符號已正確設定（T013 已實作）
   - 加強 Semantics 標籤描述（semanticsLabel: '當前計數：$_count'）
   - 確認 FloatingActionButton tooltip 描述清晰（tooltip: '增加計數'）
   - 驗證顏色對比度符合 WCAG AA 標準（4.5:1）
 
-- [ ] T025 [US3] 驗證 Widget 測試通過（執行 T023 測試並確保全部通過）
+- [x] T025 [US3] 驗證 Widget 測試通過（執行 T023 測試並確保全部通過）
 
 - [ ] T026 [US3] 使用螢幕閱讀器驗證無障礙功能
   - iOS: 啟用 VoiceOver 並測試所有元件可正確讀取
@@ -175,35 +175,35 @@
 
 **目的**: 影響多個使用者故事的改進與品質保證
 
-- [ ] T027 [P] 新增所有公開 API 的 Dart 文件註解（lib/pages/counter_page.dart, lib/theme/*.dart）
+- [x] T027 [P] 新增所有公開 API 的 Dart 文件註解（lib/pages/counter_page.dart, lib/theme/*.dart）
   - 使用 /// 三斜線註解格式
   - 說明類別目的、參數意義、回傳值
   
-- [ ] T028 [P] 執行靜態分析並修正所有警告（flutter analyze）
+- [x] T028 [P] 執行靜態分析並修正所有警告（flutter analyze）
   - 確保零錯誤、零警告
   - 禁止使用 // ignore 除非有書面理由
 
-- [ ] T029 [P] 執行程式碼格式化（dart format lib/ test/ integration_test/）
+- [x] T029 [P] 執行程式碼格式化（dart format lib/ test/ integration_test/）
   - 確保所有程式碼符合 Flutter 官方風格指南
 
-- [ ] T030 執行完整測試套件並驗證覆蓋率
+- [x] T030 執行完整測試套件並驗證覆蓋率
   - 執行 flutter test --coverage
   - 驗證 Widget 測試覆蓋率 ≥ 60%
   - 驗證業務邏輯覆蓋率 ≥ 80%
   - 產生覆蓋率報告並檢查
 
-- [ ] T031 [P] 程式碼審查檢查清單
+- [x] T031 [P] 程式碼審查檢查清單
   - 無過長函式（build() 方法 < 100 行）
   - 無深層巢狀（< 3 層）
   - 無魔術數字（所有數值使用 AppTheme 常數）
   - 所有硬編碼字串提取至常數
 
-- [ ] T032 多裝置測試驗證
+- [x] T032 多裝置測試驗證
   - iPhone 14 Pro: 啟動並驗證顯示正確
   - Pixel 7: 啟動並驗證顯示正確
   - iPad: 啟動並驗證顯示正確且居中
 
-- [ ] T033 邊界情況測試
+- [x] T033 邊界情況測試
   - 快速旋轉螢幕（橫向/直向切換）
   - 快速連點按鈕 100 次
   - 應用程式背景/前景切換
