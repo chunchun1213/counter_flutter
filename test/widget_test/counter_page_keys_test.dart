@@ -43,8 +43,8 @@ void main() {
       final button = find.byKey(const Key('increment_button'));
       expect(button, findsOneWidget);
 
-      final floatingButton = tester.widget<FloatingActionButton>(button);
-      expect(floatingButton.tooltip, '增加計數');
+      final iconButton = tester.widget<IconButton>(button);
+      expect(iconButton.tooltip, '增加計數');
     });
 
     testWidgets('color contrast meets accessibility standards', (

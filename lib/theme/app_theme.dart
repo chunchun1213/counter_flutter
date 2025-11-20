@@ -31,6 +31,22 @@ class AppTheme {
     ),
   ];
 
+  // Button shadows - double layer shadow effect
+  static final List<BoxShadow> buttonShadows = [
+    BoxShadow(
+      color: const Color(0x1A000000), // rgba(0, 0, 0, 0.1)
+      offset: const Offset(0, 4),
+      blurRadius: 6.0,
+      spreadRadius: -4.0,
+    ),
+    BoxShadow(
+      color: const Color(0x1A000000), // rgba(0, 0, 0, 0.1)
+      offset: const Offset(0, 10),
+      blurRadius: 15.0,
+      spreadRadius: -3.0,
+    ),
+  ];
+
   // Gradient background
   static final LinearGradient backgroundGradient = LinearGradient(
     begin: Alignment.topLeft,

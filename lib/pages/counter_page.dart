@@ -49,44 +49,58 @@ class _CounterPageState extends State<CounterPage> {
                   boxShadow: AppTheme.cardShadows,
                   color: AppColors.white,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Title
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppTheme.mediumPadding,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: AppTheme.mediumPadding,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // Title
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: AppTheme.mediumPadding,
+                        ),
+                        child: Text(
+                          '計數器',
+                          key: const Key('counter_title'),
+                          style: AppTextStyles.title,
+                          semanticsLabel: '計數器標題',
+                        ),
                       ),
-                      child: Text(
-                        '計數器',
-                        key: const Key('counter_title'),
-                        style: AppTextStyles.title,
-                        semanticsLabel: '計數器標題',
+                      // Counter display
+                      Semantics(
+                        label: '當前計數：$_count',
+                        child: Text(
+                          '$_count',
+                          key: const Key('counter_display'),
+                          style: AppTextStyles.counter,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: AppTheme.standardPadding),
-                    // Counter display
-                    Semantics(
-                      label: '當前計數：$_count',
-                      child: Text(
-                        '$_count',
-                        key: const Key('counter_display'),
-                        style: AppTextStyles.counter,
+                      // Circular button
+                      Container(
+                        width: AppTheme.buttonSize,
+                        height: AppTheme.buttonSize,
+                        decoration: BoxDecoration(
+                          color: AppColors.buttonBlue,
+                          shape: BoxShape.circle,
+                          boxShadow: AppTheme.buttonShadows,
+                        ),
+                        child: IconButton(
+                          key: const Key('increment_button'),
+                          onPressed: incrementCounter,
+                          icon: const Icon(Icons.add, color: AppColors.white),
+                          tooltip: '增加計數',
+                          padding: EdgeInsets.zero,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        key: const Key('increment_button'),
-        onPressed: incrementCounter,
-        tooltip: '增加計數',
-        backgroundColor: AppColors.buttonBlue,
-        child: const Icon(Icons.add, color: AppColors.white),
       ),
     );
   }

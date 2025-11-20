@@ -18,12 +18,14 @@ void main() {
       expect(find.text('0'), findsOneWidget);
     });
 
-    testWidgets('should have a FloatingActionButton', (
+    testWidgets('should have a circular button', (
       WidgetTester tester,
     ) async {
       await tester.pumpWidget(const MaterialApp(home: CounterPage()));
 
-      expect(find.byType(FloatingActionButton), findsOneWidget);
+      // Button is now an IconButton inside a Container
+      expect(find.byType(IconButton), findsOneWidget);
+      expect(find.byKey(const Key('increment_button')), findsOneWidget);
     });
 
     testWidgets('should have counter_title key', (WidgetTester tester) async {
