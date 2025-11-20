@@ -1,0 +1,120 @@
+{
+  "metadata": {
+    "figmaFileKey": "AWdcwmlvvrrjn8t19P0tR7",
+    "fileName": "Untitled",
+    "extractedAt": "2025-11-20T03:42:22Z",
+    "pageCount": 1,
+    "componentCount": 0
+  },
+  "colors": [],
+  "textStyles": [],
+  "effectStyles": [],
+  "components": [],
+  "designTokens": {
+    "cornerRadii": [
+  "Button:22061900.0",
+  "Container:16.0"
+],
+    "spacings": [],
+    "effects": [
+  {
+    "name": "Button",
+    "effects": [
+      {
+        "type": "DROP_SHADOW",
+        "visible": true,
+        "color": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 0.10000000149011612
+        },
+        "blendMode": "NORMAL",
+        "offset": {
+          "x": 0.0,
+          "y": 4.0
+        },
+        "radius": 6.0,
+        "spread": -4.0,
+        "showShadowBehindNode": false
+      },
+      {
+        "type": "DROP_SHADOW",
+        "visible": true,
+        "color": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 0.10000000149011612
+        },
+        "blendMode": "NORMAL",
+        "offset": {
+          "x": 0.0,
+          "y": 10.0
+        },
+        "radius": 15.0,
+        "spread": -3.0,
+        "showShadowBehindNode": false
+      }
+    ]
+  },
+  {
+    "name": "Container",
+    "effects": [
+      {
+        "type": "DROP_SHADOW",
+        "visible": true,
+        "color": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 0.10000000149011612
+        },
+        "blendMode": "NORMAL",
+        "offset": {
+          "x": 0.0,
+          "y": 8.0
+        },
+        "radius": 10.0,
+        "spread": -6.0,
+        "showShadowBehindNode": false
+      },
+      {
+        "type": "DROP_SHADOW",
+        "visible": true,
+        "color": {
+          "r": 0.0,
+          "g": 0.0,
+          "b": 0.0,
+          "a": 0.10000000149011612
+        },
+        "blendMode": "NORMAL",
+        "offset": {
+          "x": 0.0,
+          "y": 20.0
+        },
+        "radius": 25.0,
+        "spread": -5.0,
+        "showShadowBehindNode": false
+      }
+    ]
+  }
+],
+    "textProperties": [
+  {
+    "name": "計數器",
+    "fontSize": 16.0,
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "lineHeight": 24.0
+  },
+  {
+    "name": "37",
+    "fontSize": 72.0,
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "lineHeight": 108.0
+  }
+]
+  }
+}
