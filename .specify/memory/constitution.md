@@ -1,189 +1,221 @@
 <!--
 Sync Impact Report:
-Version: 1.0.0 (Initial constitution - MINOR bump for new governance framework)
+Version: 1.1.0 (MINOR bump - added Documentation Language Policy principle)
 Ratification: 2025-11-20
 Last Amendment: 2025-11-20
 
+Modified Sections:
+- Converted entire constitution to English (governance document language)
+- Added Principle V: Documentation Language Policy
+
 Added Sections:
-- Core Principles: Code Quality, Testing Standards, User Experience Consistency, Performance Requirements
+- Core Principles: Code Quality, Testing Standards, User Experience Consistency, Performance Requirements, Documentation Language Policy
 - Performance Standards: Quantifiable performance benchmarks
 - Development Workflow: Quality gates and review process
 
 Templates Status:
 ✅ plan-template.md - Constitution Check section aligns with new principles
-✅ spec-template.md - Requirements and success criteria align with UX/quality principles
-✅ tasks-template.md - Task categorization supports quality gates and testing discipline
-✅ checklist-template.md - Compatible with quality verification workflows
-✅ agent-file-template.md - No constitution-specific references to update
+✅ spec-template.md - Requirements and success criteria align with UX/quality principles, MUST output in zh-TW
+✅ tasks-template.md - Task categorization supports quality gates and testing discipline, MUST output in zh-TW
+✅ checklist-template.md - Compatible with quality verification workflows, MUST output in zh-TW
+✅ agent-file-template.md - No constitution-specific references to update, MUST output in zh-TW
 
 Follow-up TODOs: None - all placeholders filled
 -->
 
-# Counter Flutter 專案憲章
+# Counter Flutter Project Constitution
 
-## 核心原則
+## Core Principles
 
-### I. 程式碼品質 (NON-NEGOTIABLE)
+### I. Code Quality (NON-NEGOTIABLE)
 
-所有程式碼必須符合以下品質標準：
+All code MUST meet the following quality standards:
 
-- **可讀性優先**：程式碼必須清晰表達意圖，優先選擇明確的命名而非簡潔但模糊的命名
-- **單一職責**：每個類別、函式必須只有一個明確的職責，功能必須內聚
-- **無重複原則 (DRY)**：邏輯重複超過兩次必須重構為可復用元件
-- **靜態分析零容忍**：所有程式碼必須通過 `flutter analyze` 且無警告，禁止使用 `// ignore` 規避檢查（除非有書面理由並記錄於程式碼審查）
-- **文件化要求**：所有公開 API、複雜邏輯必須包含 Dart 文件註解，說明用途、參數與回傳值
+- **Readability First**: Code MUST clearly express intent; prefer explicit naming over concise but ambiguous naming
+- **Single Responsibility**: Each class and function MUST have exactly one clear responsibility; functionality MUST be cohesive
+- **DRY Principle**: Logic repeated more than twice MUST be refactored into reusable components
+- **Static Analysis Zero Tolerance**: All code MUST pass `flutter analyze` with no warnings; use of `// ignore` is prohibited unless justified in writing during code review
+- **Documentation Requirements**: All public APIs and complex logic MUST include Dart doc comments explaining purpose, parameters, and return values
 
-**理由**：高品質程式碼降低維護成本、減少錯誤，並提升團隊協作效率。品質債務會隨時間累積，預防優於事後補救。
+**Rationale**: High-quality code reduces maintenance costs, minimizes bugs, and improves team collaboration efficiency. Quality debt compounds over time; prevention is superior to remediation.
 
-### II. 測試標準 (NON-NEGOTIABLE)
+### II. Testing Standards (NON-NEGOTIABLE)
 
-測試是品質保證的基石，必須嚴格執行：
+Testing is the cornerstone of quality assurance and MUST be rigorously enforced:
 
-- **測試優先 (Test-First)**：新功能開發遵循 Red-Green-Refactor 循環
-  1. 撰寫失敗的測試
-  2. 實作最小程式碼使測試通過
-  3. 重構並保持測試通過
-- **覆蓋率要求**：
-  - 業務邏輯（BLoC/Provider/Service）：**最低 80% 覆蓋率**
-  - UI Widget：**最低 60% 覆蓋率**
-  - 工具函式/輔助類別：**100% 覆蓋率**
-- **測試分層**：
-  - **單元測試 (Unit)**：測試獨立邏輯單元（函式、類別方法）
-  - **Widget 測試**：測試 UI 元件行為與互動
-  - **整合測試 (Integration)**：測試端到端使用者流程（關鍵路徑必須包含）
-- **測試命名**：使用 `test('should [expected behavior] when [condition]')` 格式，清楚描述測試意圖
-- **測試隔離**：每個測試必須獨立執行，不依賴執行順序或共享狀態
+- **Test-First**: New feature development follows the Red-Green-Refactor cycle
+  1. Write failing tests
+  2. Implement minimum code to pass tests
+  3. Refactor while keeping tests passing
+- **Coverage Requirements**:
+  - Business Logic (BLoC/Provider/Service): **minimum 80% coverage**
+  - UI Widgets: **minimum 60% coverage**
+  - Utility functions/helper classes: **100% coverage**
+- **Test Layering**:
+  - **Unit Tests**: Test isolated logic units (functions, class methods)
+  - **Widget Tests**: Test UI component behavior and interactions
+  - **Integration Tests**: Test end-to-end user flows (critical paths MUST be included)
+- **Test Naming**: Use `test('should [expected behavior] when [condition]')` format to clearly describe test intent
+- **Test Isolation**: Each test MUST execute independently, without dependency on execution order or shared state
 
-**理由**：測試是回歸保護網，確保變更不會破壞既有功能。測試優先強制開發者思考 API 設計與邊界條件。
+**Rationale**: Tests provide a regression safety net, ensuring changes don't break existing functionality. Test-first forces developers to think about API design and edge cases.
 
-### III. 使用者體驗一致性
+### III. User Experience Consistency
 
-使用者介面必須提供流暢、一致且符合平台規範的體驗：
+User interfaces MUST provide smooth, consistent, and platform-compliant experiences:
 
-- **設計系統遵循**：
-  - 使用統一的設計 token（顏色、字體、間距）
-  - 建立可復用的 UI 元件庫（按鈕、輸入框、卡片等）
-  - 禁止在業務邏輯層硬編碼樣式值
-- **平台一致性**：
-  - 遵循 Material Design 3 準則
-  - 支援系統主題（淺色/深色模式）
-  - 尊重系統無障礙設定（字體大小、螢幕閱讀器）
-- **互動回饋**：
-  - 所有使用者操作必須提供即時視覺回饋（載入狀態、按鈕按下效果）
-  - 錯誤訊息必須明確指引使用者如何修正
-  - 耗時操作（>500ms）必須顯示進度指示器
-- **無障礙 (Accessibility)**：
-  - 所有互動元件必須支援鍵盤/語音導航
-  - 使用 `Semantics` widget 為螢幕閱讀器提供描述
-  - 顏色對比度符合 WCAG AA 標準（最低 4.5:1）
+- **Design System Adherence**:
+  - Use unified design tokens (colors, fonts, spacing)
+  - Build reusable UI component library (buttons, input fields, cards, etc.)
+  - Hardcoding style values in business logic layer is prohibited
+- **Platform Consistency**:
+  - Follow Material Design 3 guidelines
+  - Support system themes (light/dark mode)
+  - Respect system accessibility settings (font size, screen readers)
+- **Interaction Feedback**:
+  - All user actions MUST provide immediate visual feedback (loading states, button press effects)
+  - Error messages MUST clearly guide users on how to correct issues
+  - Long-running operations (>500ms) MUST display progress indicators
+- **Accessibility**:
+  - All interactive components MUST support keyboard/voice navigation
+  - Use `Semantics` widgets to provide descriptions for screen readers
+  - Color contrast ratios MUST meet WCAG AA standards (minimum 4.5:1)
 
-**理由**：一致的體驗建立使用者信任，降低學習成本。無障礙設計擴大使用者群體並符合法規要求。
+**Rationale**: Consistent experiences build user trust and reduce learning curves. Accessible design expands user reach and meets regulatory requirements.
 
-### IV. 效能要求
+### IV. Performance Requirements
 
-應用程式必須在目標裝置上流暢執行，符合以下效能基準：
+Applications MUST execute smoothly on target devices, meeting the following performance benchmarks:
 
-- **畫面更新效能**：
-  - 維持 **60 FPS**（16ms/frame），複雜動畫場景允許降至 55 FPS
-  - 禁止在 `build()` 方法中執行耗時運算或 I/O 操作
-  - 使用 `const` constructor 減少不必要的 widget 重建
-- **啟動時間**：
-  - 冷啟動至首個可互動畫面：**< 3 秒**（中階裝置）
-  - 熱重載響應時間：**< 500ms**
-- **記憶體使用**：
-  - 應用程式峰值記憶體：**< 150MB**（不含快取資料）
-  - 圖片必須使用適當尺寸與格式，避免載入原始高解析度圖檔
-  - 列表使用 `ListView.builder` 或 `GridView.builder` 實現虛擬滾動
-- **網路請求**：
-  - API 請求必須設定逾時時間（預設 30 秒）
-  - 實作請求快取策略，避免重複請求相同資料
-  - 大型資料使用分頁載入
-- **效能監控**：
-  - 使用 Flutter DevTools 定期檢查效能瓶頸
-  - 關鍵路徑必須通過效能測試（`integration_test` + 效能追蹤）
-  - 發布前必須在低階裝置（記憶體 < 2GB）驗證效能
+- **Frame Rate Performance**:
+  - Maintain **60 FPS** (16ms/frame); complex animation scenes may drop to 55 FPS
+  - Expensive computations or I/O operations are prohibited in `build()` methods
+  - Use `const` constructors to reduce unnecessary widget rebuilds
+- **Startup Time**:
+  - Cold start to first interactive screen: **< 3 seconds** (mid-range devices)
+  - Hot reload response time: **< 500ms**
+- **Memory Usage**:
+  - Application peak memory: **< 150MB** (excluding cached data)
+  - Images MUST use appropriate sizes and formats; avoid loading original high-resolution images
+  - Lists MUST use `ListView.builder` or `GridView.builder` for virtual scrolling
+- **Network Requests**:
+  - API requests MUST set timeout limits (default 30 seconds)
+  - Implement request caching strategies to avoid redundant requests for identical data
+  - Large data MUST use pagination
+- **Performance Monitoring**:
+  - Use Flutter DevTools to regularly check for performance bottlenecks
+  - Critical paths MUST pass performance tests (`integration_test` + performance profiling)
+  - Pre-release MUST validate performance on low-end devices (memory < 2GB)
 
-**理由**：效能直接影響使用者滿意度與留存率。流暢的體驗是高品質應用的基本要求。
+**Rationale**: Performance directly impacts user satisfaction and retention. Smooth experiences are fundamental requirements for high-quality applications.
 
-## 開發工作流程
+### V. Documentation Language Policy (NON-NEGOTIABLE)
 
-### 程式碼審查 (Code Review)
+Language usage MUST follow strict separation to maintain consistency and clarity:
 
-所有程式碼變更必須經過審查才能合併：
+- **Constitution & Governance** (English):
+  - This constitution document MUST be written in English
+  - Governance documents, amendment proposals, and compliance reports MUST be in English
+  - Rationale: Universal accessibility for technical stakeholders and future team expansion
+- **User-Facing Documentation** (Traditional Chinese - zh-TW):
+  - ALL specifications (`spec.md`) MUST be written in Traditional Chinese
+  - ALL implementation plans (`plan.md`) MUST be written in Traditional Chinese
+  - ALL task lists (`tasks.md`) MUST be written in Traditional Chinese
+  - ALL checklists MUST be written in Traditional Chinese
+  - ALL quickstart guides and end-user documentation MUST be written in Traditional Chinese
+  - ALL generated files from `/speckit.*` commands MUST output in Traditional Chinese
+  - Rationale: Ensures clarity for local users, stakeholders, and team members
+- **Code & Technical Artifacts** (English):
+  - Code comments, variable names, function names MUST be in English
+  - Commit messages MUST be in English (Conventional Commits format)
+  - Technical logs and error messages MUST be in English
+  - Rationale: Industry standard practice for international collaboration and tooling compatibility
+- **Exceptions**:
+  - User-visible UI strings MAY be in Traditional Chinese (use i18n for localization)
+  - Technical discussions in code reviews MAY use either language based on team preference
 
-- **審查檢查清單**：
-  - ✅ 符合憲章所有核心原則
-  - ✅ 測試覆蓋率達標且測試通過
-  - ✅ 靜態分析無警告
-  - ✅ 無程式碼異味（過長函式、深層巢狀、魔術數字）
-  - ✅ 變更包含必要的文件更新
-- **審查時效**：程式碼審查必須在 24 小時內完成初次回饋
-- **建設性回饋**：審查意見必須具體且提供改進建議，避免模糊或主觀批評
+**Rationale**: Clear language policy eliminates ambiguity, ensures consistency across artifacts, and facilitates proper audience targeting (technical governance vs. user-facing specifications).
 
-### 品質閘門 (Quality Gates)
+## Development Workflow
 
-程式碼合併前必須通過以下自動化檢查：
+### Code Review
 
-1. **靜態分析**：`flutter analyze` 零錯誤/零警告
-2. **格式化**：`dart format --set-exit-if-changed .` 通過
-3. **測試套件**：所有測試通過且覆蓋率達標
-4. **建構驗證**：`flutter build apk/ios` 成功完成
+All code changes MUST undergo review before merging:
 
-### 版本控制
+- **Review Checklist**:
+  - ✅ Complies with all core constitutional principles
+  - ✅ Test coverage meets targets and all tests pass
+  - ✅ Static analysis shows no warnings
+  - ✅ No code smells (overly long functions, deep nesting, magic numbers)
+  - ✅ Changes include necessary documentation updates
+  - ✅ Documentation language policy is followed (specs/plans in zh-TW, code/commits in English)
+- **Review Timeliness**: Code reviews MUST receive initial feedback within 24 hours
+- **Constructive Feedback**: Review comments MUST be specific and provide improvement suggestions; avoid vague or subjective criticism
 
-- **分支策略**：使用功能分支（`###-feature-name`）開發，完成後合併至 `main`
-- **提交訊息**：遵循 Conventional Commits 格式（`feat:`, `fix:`, `docs:`, `test:`, `refactor:`）
-- **變更追蹤**：使用 `/speckit.*` 指令建立規格文件與任務追蹤
+### Quality Gates
 
-## 技術約束
+Code MUST pass the following automated checks before merging:
 
-### 技術棧
+1. **Static Analysis**: `flutter analyze` with zero errors/warnings
+2. **Formatting**: `dart format --set-exit-if-changed .` passes
+3. **Test Suite**: All tests pass and coverage meets targets
+4. **Build Verification**: `flutter build apk/ios` completes successfully
 
-- **Flutter SDK**：最低版本 3.10（穩定版本）
-- **Dart 版本**：最低 3.0
-- **狀態管理**：優先使用 `flutter_bloc` 或 `provider`，保持一致性
-- **網路請求**：使用 `dio` 或 `http` 套件
-- **本地儲存**：`shared_preferences`（設定）、`sqflite`（結構化資料）、`hive`（高效能 NoSQL）
+### Version Control
 
-### 相依性管理
+- **Branching Strategy**: Use feature branches (`###-feature-name`) for development, merge to `main` upon completion
+- **Commit Messages**: Follow Conventional Commits format in English (`feat:`, `fix:`, `docs:`, `test:`, `refactor:`)
+- **Change Tracking**: Use `/speckit.*` commands to create specification documents and task tracking (outputs in zh-TW)
 
-- 新增第三方套件必須評估：
-  - 套件維護狀態（最近 6 個月內有更新）
-  - 社群支援（pub.dev 評分 > 130）
-  - 授權相容性
-- 定期更新相依性（每月檢查一次），修復已知漏洞
+## Technical Constraints
 
-## 治理規則
+### Technology Stack
 
-### 憲章優先級
+- **Flutter SDK**: Minimum version 3.10 (stable)
+- **Dart Version**: Minimum 3.0
+- **State Management**: Prefer `flutter_bloc` or `provider` for consistency
+- **Network Requests**: Use `dio` or `http` package
+- **Local Storage**: `shared_preferences` (settings), `sqflite` (structured data), `hive` (high-performance NoSQL)
 
-本憲章規範優先於所有其他開發慣例與個人偏好。任何衝突以憲章為準。
+### Dependency Management
 
-### 修訂流程
+- Adding third-party packages MUST evaluate:
+  - Package maintenance status (updated within last 6 months)
+  - Community support (pub.dev score > 130)
+  - License compatibility
+- Regular dependency updates (monthly checks) to fix known vulnerabilities
 
-憲章修訂必須遵循以下流程：
+## Governance
 
-1. **提案**：撰寫修訂提案，說明變更原因、影響範圍與遷移計畫
-2. **審查**：團隊審查並討論提案
-3. **批准**：達成共識後更新憲章
-4. **版本控制**：更新版本號與修訂日期
-5. **同步更新**：更新所有相關模板與文件
+### Constitutional Priority
 
-### 版本控制規則
+This constitution supersedes all other development practices and personal preferences. Any conflicts defer to the constitution.
 
-- **MAJOR**：移除或重新定義核心原則（破壞性變更）
-- **MINOR**：新增原則或章節
-- **PATCH**：文字澄清、錯字修正、非語意修改
+### Amendment Process
 
-### 合規性審查
+Constitutional amendments MUST follow this process:
 
-- 所有 Pull Request 必須驗證憲章合規性
-- 每月進行一次程式碼庫健康度審查，檢查測試覆蓋率、靜態分析結果與效能指標
-- 複雜度增加（如新增第三方服務、架構變更）必須在程式碼審查中明確說明理由
+1. **Proposal**: Write amendment proposal explaining rationale, impact scope, and migration plan
+2. **Review**: Team reviews and discusses proposal
+3. **Approval**: Update constitution after consensus
+4. **Versioning**: Update version number and amendment date
+5. **Synchronization**: Update all related templates and documentation
 
-### 執行時開發指引
+### Versioning Rules
 
-- 使用 `.specify/templates/agent-file-template.md` 產生的開發指引檔案作為日常開發參考
-- 使用 `.github/prompts/speckit.*.prompt.md` 指令進行規格化開發流程
+- **MAJOR**: Remove or redefine core principles (breaking changes)
+- **MINOR**: Add new principles or sections
+- **PATCH**: Clarifications, typo fixes, non-semantic modifications
 
-**版本**: 1.0.0 | **批准日期**: 2025-11-20 | **最後修訂**: 2025-11-20
+### Compliance Review
+
+- All Pull Requests MUST verify constitutional compliance
+- Monthly codebase health audits checking test coverage, static analysis results, and performance metrics
+- Complexity increases (e.g., adding third-party services, architectural changes) MUST be explicitly justified in code reviews
+
+### Runtime Development Guidance
+
+- Use development guidance files generated from `.specify/templates/agent-file-template.md` as daily development reference (outputs in zh-TW)
+- Use `.github/prompts/speckit.*.prompt.md` commands for specification-driven development workflows (outputs in zh-TW)
+
+**Version**: 1.1.0 | **Ratified**: 2025-11-20 | **Last Amended**: 2025-11-20
